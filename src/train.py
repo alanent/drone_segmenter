@@ -43,7 +43,7 @@ def custom_augmentation():
 #############################################################################################
 #############################################################################################
 
-model_selected ='mobilenet_segnet' #@param  ['fcn_8','fcn_32','fcn_8_vgg','fcn_32_vgg','fcn_8_resnet50','fcn_32_resnet50','fcn_8_mobilenet','fcn_32_mobilenet','pspnet',	'vgg_pspnet','resnet50_pspnet','unet_mini','unet','vgg_unet','resnet50_unet','mobilenet_unet','segnet','vgg_segnet','resnet50_segnet','mobilenet_segnet', 'pretrained_resnet50_pspnet']
+model_selected ='pretrained_resnet50_pspnet' #@param  ['fcn_8','fcn_32','fcn_8_vgg','fcn_32_vgg','fcn_8_resnet50','fcn_32_resnet50','fcn_8_mobilenet','fcn_32_mobilenet','pspnet',	'vgg_pspnet','resnet50_pspnet','unet_mini','unet','vgg_unet','resnet50_unet','mobilenet_unet','segnet','vgg_segnet','resnet50_segnet','mobilenet_segnet', 'pretrained_resnet50_pspnet']
 
 train_image_dir = "data/data_processed/train/original_images"  #@param {type:"string"}
 train_mask_dir = "data/data_processed/train/label_images_semantic" #@param {type:"string"}
@@ -54,8 +54,8 @@ val_mask_dir = "data/data_processed/val/label_images_semantic" #@param {type:"st
 classes = 24 #@param {type:"number"}
 epochs =   50#@param {type:"number"}
 
-input_height = 800 #@param {type:"number"}
-input_width =  1200 #@param {type:"number"}
+input_height = 1000 #@param {type:"number"}
+input_width =  1500 #@param {type:"number"}
 
 input_width =int(input_width)
 input_height =int(input_height)

@@ -1,7 +1,7 @@
 
 change_dim = True #@param {type:"boolean"}
-img_height = 800 #@param {type:"number"}
-img_width =   1200 #@param {type:"number"}
+img_height = 1600 #@param {type:"number"}
+img_width =   2400 #@param {type:"number"}
 
 
 split= (.9, .1) #@param {type:"raw"}
