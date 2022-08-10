@@ -1,0 +1,29 @@
+stages:
+  prepare:
+    cmd: python src/preprocess.py
+    deps:
+    - data/data_raw
+    - src/preprocess.py
+    outs:
+    - data/data_processed/train
+    - data/data_processed/val
+  train:
+    cmd: python src/train.py
+    deps:
+    - data/data_processed/train
+    - data/data_processed/val
+    - src/train.py
+    outs:
+    - model
+    metrics:
+    - metrics/training_info.json
+    - metrics/training_logs
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - data/data_processed/train
+    - data/data_processed/val
+    - model
+    - src/evaluate.py
+    metrics:
+    - metrics/eval_metrics.json

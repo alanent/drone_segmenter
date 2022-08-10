@@ -1,0 +1,69 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python src/preprocess.py
+    deps:
+    - path: data/data_raw
+      md5: aa44605b7fb3beb0ff5447e41952a290.dir
+      size: 4144395524
+      nfiles: 800
+    - path: src/preprocess.py
+      md5: 8ee7eb295877e29819100acb7f7ab577
+      size: 1395
+    outs:
+    - path: data/data_processed/train
+      md5: c144dea9649da4fdf4ea9dde0cc8e425.dir
+      size: 23836796
+      nfiles: 720
+    - path: data/data_processed/val
+      md5: fd87c2304df38a9618e234dd8fcd3f28.dir
+      size: 2777157
+      nfiles: 80
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: data/data_processed/train
+      md5: c144dea9649da4fdf4ea9dde0cc8e425.dir
+      size: 23836796
+      nfiles: 720
+    - path: data/data_processed/val
+      md5: fd87c2304df38a9618e234dd8fcd3f28.dir
+      size: 2777157
+      nfiles: 80
+    - path: src/train.py
+      md5: 2cb4f3632a4ce1161a0e2c5a3653f5b4
+      size: 6406
+    outs:
+    - path: metrics/training_info.json
+      md5: 5baede0c299f21d6795ad1b9ad447488
+      size: 173
+    - path: metrics/training_logs
+      md5: 9f0a35fff6054c2414f88dfe36e24630.dir
+      size: 381011
+      nfiles: 2
+    - path: model
+      md5: 4ca816278b992835d2f44d3c4222a653.dir
+      size: 68557892
+      nfiles: 4
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - path: data/data_processed/train
+      md5: c144dea9649da4fdf4ea9dde0cc8e425.dir
+      size: 23836796
+      nfiles: 720
+    - path: data/data_processed/val
+      md5: fd87c2304df38a9618e234dd8fcd3f28.dir
+      size: 2777157
+      nfiles: 80
+    - path: model
+      md5: 4ca816278b992835d2f44d3c4222a653.dir
+      size: 68557892
+      nfiles: 4
+    - path: src/evaluate.py
+      md5: 7f9623293ecc77dced965da66b299117
+      size: 6024
+    outs:
+    - path: metrics/eval_metrics.json
+      md5: 6f030386d6aabfa6e8058f13074574f7
+      size: 1074
