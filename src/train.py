@@ -52,10 +52,10 @@ val_image_dir = "data/data_processed/val/original_images" #@param {type:"string"
 val_mask_dir = "data/data_processed/val/label_images_semantic" #@param {type:"string"}
 
 classes = 24 #@param {type:"number"}
-epochs =   20#@param {type:"number"}
+epochs =   50#@param {type:"number"}
 
-input_height = 400 #@param {type:"number"}
-input_width =  600 #@param {type:"number"}
+input_height = 800 #@param {type:"number"}
+input_width =  1200 #@param {type:"number"}
 
 input_width =int(input_width)
 input_height =int(input_height)
